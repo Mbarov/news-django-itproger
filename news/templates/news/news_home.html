@@ -1,0 +1,40 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}
+  Новости на сайте
+{% endblock %}
+
+{% block content %}
+  <div class='features'>   
+      <h1>Новости на сайте</h1>
+      {% if news %}
+        {% for el in news %}
+          <div class='alert alert-warning'>  <!--для выделения новости цветом-->
+            <h3>{{ el.title }}</h3>
+            <p>{{ el.anons }}</p>
+            <a href='{% url 'news-detail' el.id %}' class='btn btn-warning'>Читать детальнее</a> 
+            <!--{% url 'news-detail' el.id %} - идет отсылка к динамической страницу news-detail с указанием номера id через el.id-->
+          </div> 
+        {% endfor %}
+      {% else %}
+        <p>У Вас нет записей!</p>
+      {% endif %}
+  </div>
+{% endblock %}
+
+
+
+{% comment %} {% block content %}
+<div class='features'>
+    <h1>Новости на сайте</h1>
+     {% for el in values %}
+     {% if el == 'Hello' %}
+      <p>{{el }}</p>
+     {% endif %}
+     {% endfor %}
+     {{values.0}}
+    <p>Текст Текст Текст Текст Текст Текст Текст Текст Текст Текст Текст Текст Текст Текст Текст Текст Текст Текст Текст</p>
+    <button class='btn btn-warning'>На страницу про нас</button><!--кнопка-->
+    </div>
+{% endblock %} {% endcomment %}
+
